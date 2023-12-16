@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Character } from '../interfaces/character.interface';
+import { v4 as uuid } from 'uuid'
 
 @Injectable({
     providedIn: 'root'
@@ -8,14 +9,18 @@ export class DBZService {
 
     public characters: Character[] = []
 
-    onNewCharacter(character : Character) {
-        this.characters.push(character)
+    onNewCharacter(character: Character) {
+        const newCharacter: Character = {
+            ...character,
+            id: uuid(),
+        }
+        this.characters.push(newCharacter)
     }
 
-    onDeletedCharacter( id : number){
-        this.characters.splice(id, 1)
+    onDeletedCharacterById(id: string) {
+        this.characters = this.characters.filter(character => character.id !== id)
     }
 
     constructor() { }
-    
+
 }
