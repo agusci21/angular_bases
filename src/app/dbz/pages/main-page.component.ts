@@ -9,26 +9,13 @@ import { Character } from '../interfaces/character.interface';
 })
 
 export class MainPageComponent {
-    public characters: Character[] = [
-        {
-            name: 'Krillin',
-            power: 1000,
-        },
-        {
-            name: 'Goku',
-            power: 9500,
-        },
-        {
-            name: 'Goku2',
-            power: 9500,
-        },
-        {
-            name: 'Goku3',
-            power: 9500,
-        },
-        {
-            name: 'Goku4',
-            power: 9500,
-        },
-    ]
+    public characters: Character[] = []
+
+    onNewCharacter(character : Character) {
+        this.characters.push(character)
+    }
+
+    onDeletedCharacter( id : number){
+        this.characters.splice(id, 1)
+    }
 }
