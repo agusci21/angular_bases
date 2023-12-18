@@ -9,7 +9,7 @@ export class DBZService {
 
     public characters: Character[] = []
 
-    onNewCharacter(character: Character) {
+    addCharacter(character: Character) {
         const newCharacter: Character = {
             ...character,
             id: uuid(),
